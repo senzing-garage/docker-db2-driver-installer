@@ -1,0 +1,10 @@
+<configuration>
+  <dsncollection>
+    <dsn alias="{SCHEMA}" name="{SCHEMA}" host="{HOST}" port="{PORT}" />
+  </dsncollection>
+  <databases>
+    <database name="{SCHEMA}" host="{HOST}" port="{PORT}">
+      <parameter name="CommProtocol" value="TCPIP"/>
+    </database>
+  </databases>
+</configuration>
