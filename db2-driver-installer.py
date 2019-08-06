@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 
 # -----------------------------------------------------------------------------
 # db2-driver-installer.py handles installation of the Db2 driver client package.
@@ -54,7 +54,6 @@ configuration_locator = {
 # Enumerate keys in 'configuration_locator' that should not be printed to the log.
 
 keys_to_redact = [
-    "password",
     ]
 
 # -----------------------------------------------------------------------------
@@ -83,6 +82,16 @@ def get_parser():
                     "dest": "senzing_dir",
                     "metavar": "SENZING_DIR",
                     "help": "Location of Senzing. Default: /opt/senzing"
+                },
+            },
+        },
+        'sleep': {
+            "help": 'Do nothing but sleep. For Docker testing.',
+            "arguments": {
+                "--sleep-time-in-seconds": {
+                    "dest": "sleep_time_in_seconds",
+                    "metavar": "SENZING_SLEEP_TIME_IN_SECONDS",
+                    "help": "Sleep time in seconds. DEFAULT: 0 (infinite)"
                 },
             },
         },
@@ -124,6 +133,7 @@ MESSAGE_DEBUG = 900
 
 message_dictionary = {
     "100": "senzing-" + SENZING_PRODUCT_ID + "{0:04d}I",
+    "150": "{0} copied to {1}.",
     "292": "Configuration change detected.  Old: {0} New: {1}",
     "293": "For information on warnings and errors, see https://github.com/Senzing/stream-loader#errors",
     "294": "Version: {0}  Updated: {1}",
@@ -133,6 +143,7 @@ message_dictionary = {
     "298": "Exit {0}",
     "299": "{0}",
     "300": "senzing-" + SENZING_PRODUCT_ID + "{0:04d}W",
+    "350": "Cannot copy {0} to {1}.",
     "499": "{0}",
     "500": "senzing-" + SENZING_PRODUCT_ID + "{0:04d}E",
     "695": "Unknown database scheme '{0}' in database url '{1}'",
@@ -409,16 +420,48 @@ def do_install(args):
 
     common_prolog(config)
 
-    # Perform action.
+    # Copy directory inside of container to mounted volume.
 
     source = "/opt/IBM-template"
-    target = "/opt/IBM"
+    target = "/opt/IBM/db2"
 
     try:
         shutil.copytree(source, target, symlinks=True)
-        logging.info(message_info(136, source, target))
+        logging.info(message_info(150, source, target))
     except:
-        logging.info(message_warn(204, source, target))
+        logging.info(message_warn(350, source, target))
+
+    # Epilog.
+
+    logging.info(exit_template(config))
+
+
+def do_sleep(args):
+    ''' Sleep.  Used for debugging. '''
+
+    # Get context from CLI, environment variables, and ini files.
+
+    config = get_configuration(args)
+
+    # Prolog.
+
+    logging.info(entry_template(config))
+
+    # Pull values from configuration.
+
+    sleep_time_in_seconds = config.get('sleep_time_in_seconds')
+
+    # Sleep
+
+    if sleep_time_in_seconds > 0:
+        logging.info(message_info(296, sleep_time_in_seconds))
+        time.sleep(sleep_time_in_seconds)
+
+    else:
+        sleep_time_in_seconds = 3600
+        while True:
+            logging.info(message_info(295))
+            time.sleep(sleep_time_in_seconds)
 
     # Epilog.
 

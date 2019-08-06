@@ -42,6 +42,15 @@ LABEL Name="senzing/db2-driver-installer" \
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
+USER root
+
+# Install packages via apt.
+
+RUN apt-get update \
+ && apt-get -y install \
+      python-dev \
+ && rm -rf /var/lib/apt/lists/*
+
 # Copy files from repository.
 
 COPY ./rootfs /
