@@ -1,9 +1,9 @@
 <configuration>
   <dsncollection>
-    <dsn alias="{SCHEMA}" name="{SCHEMA}" host="{HOST}" port="{PORT}" />
+    <dsn alias="{schema}" name="{schema}" host="{hostname}" port="{port}" />
   </dsncollection>
   <databases>
-    <database name="{SCHEMA}" host="{HOST}" port="{PORT}">
+    <database name="{schema}" host="{hostname}" port="{port}">
       <parameter name="CommProtocol" value="TCPIP"/>
     </database>
   </databases>
