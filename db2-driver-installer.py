@@ -20,7 +20,7 @@ import zipfile
 __all__ = []
 __version__ = "1.0.0"  # See https://www.python.org/dev/peps/pep-0396/
 __date__ = '2019-08-06'
-__updated__ = '2019-08-06'
+__updated__ = '2019-08-12'
 
 SENZING_PRODUCT_ID = "5008"  # See https://github.com/Senzing/knowledge-base/blob/master/lists/senzing-product-ids.md
 log_format = '%(asctime)s %(message)s'
@@ -186,7 +186,7 @@ def message_info(index, *args):
     return message_generic(MESSAGE_INFO, index, *args)
 
 
-def message_warn(index, *args):
+def message_warning(index, *args):
     return message_generic(MESSAGE_WARN, index, *args)
 
 
@@ -291,7 +291,7 @@ def validate_configuration(config):
 
     subcommand = config.get('subcommand')
 
-    if subcommand in ['task1', 'task2']:
+    if subcommand in ['install']:
         pass
 
     # Log warning messages.
@@ -423,13 +423,18 @@ def do_install(args):
     # Copy directory inside of container to mounted volume.
 
     source = "/opt/IBM-template"
-    target = "/opt/IBM/db2"
+    staging = "/opt/IBM/staging"
+    target = "/opt/IBM/"
+
+    # Copying source to a mounted target is a little tricky.
 
     try:
-        shutil.copytree(source, target, symlinks=True)
+        shutil.copytree(source, staging, symlinks=True)
+        shutil.move("{0}/db2".format(staging), target)
+        shutil.rmtree(staging)
         logging.info(message_info(150, source, target))
     except:
-        logging.info(message_warn(350, source, target))
+        logging.info(message_warning(350, source, target))
 
     # Epilog.
 
