@@ -61,7 +61,7 @@ This repository assumes a working knowledge of:
 
 Configuration values specified by environment variable or command line parameter.
 
-- **[SENZING_IBM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_ibm_dir)**
+- **[SENZING_OPT_IBM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_opt_ibm_dir)**
 
 ### Volumes
 
@@ -70,7 +70,7 @@ Configuration values specified by environment variable or command line parameter
    identify directories for RPM output in this manner:
 
     ```console
-    export SENZING_IBM_DIR=/opt/IBM
+    export SENZING_OPT_IBM_DIR=/opt/IBM
     ```
 
 1. :pencil2: Option #2.
@@ -81,7 +81,7 @@ Configuration values specified by environment variable or command line parameter
     ```console
     export SENZING_VOLUME=/opt/my-senzing
 
-    export SENZING_IBM_DIR=${SENZING_VOLUME}/db2
+    export SENZING_OPT_IBM_DIR=${SENZING_VOLUME}/db2
     ```
 
 ### Run docker container
@@ -103,7 +103,7 @@ Configuration values specified by environment variable or command line parameter
     sudo docker run \
       --net ${SENZING_NETWORK} \
       --rm \
-      --volume ${SENZING_IBM_DIR}:/opt/IBM \
+      --volume ${SENZING_OPT_IBM_DIR}:/opt/IBM \
       senzing/db2-driver-installer
     ```
 
@@ -127,16 +127,11 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     ```console
     export GIT_ACCOUNT=senzing
     export GIT_REPOSITORY=docker-db2-driver-installer
-    ```
-
-1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
-
-1. After the repository has been cloned, be sure the following are set:
-
-    ```console
     export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
     ```
+
+1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
 
 ### Downloads
 
@@ -159,14 +154,14 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
 ### Build docker image for development
 
-1. Option #1 - Using `docker` command and local repository.
+1. **Option #1:** Using `docker` command and local repository.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
     sudo docker build --tag senzing/db2-driver-installer .
     ```
 
-1. Option #2 - Using `make` command.
+1. **Option #2:** Using `make` command.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
