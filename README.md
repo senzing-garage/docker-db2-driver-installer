@@ -65,7 +65,7 @@ Configuration values specified by environment variable or command line parameter
 
 ### Volumes
 
-1. :pencil2: Option #1.
+1. **Example #1:**
    To mimic an actual RPM installation,
    identify directories for RPM output in this manner:
 
@@ -73,7 +73,7 @@ Configuration values specified by environment variable or command line parameter
     export SENZING_OPT_IBM_DIR=/opt/IBM
     ```
 
-1. :pencil2: Option #2.
+1. :pencil2: **Example #2:**
    If Senzing directories were put in alternative directories,
    set environment variables to reflect where the directories were placed.
    Example:
@@ -81,7 +81,7 @@ Configuration values specified by environment variable or command line parameter
     ```console
     export SENZING_VOLUME=/opt/my-senzing
 
-    export SENZING_OPT_IBM_DIR=${SENZING_VOLUME}/db2
+    export SENZING_OPT_IBM_DIR=${SENZING_VOLUME}/opt-ibm
     ```
 
 ### Run docker container
@@ -177,3 +177,5 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 1. See [docs/errors.md](docs/errors.md).
 
 ## References
+
+1. [How to support Db2](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/support-db2.md)
