@@ -17,9 +17,9 @@ a mounted volume.
     1. [Time](#time)
     1. [Background knowledge](#background-knowledge)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
-    1. [Get docker image](#get-docker-image)
     1. [Configuration](#configuration)
     1. [Volumes](#volumes)
+    1. [Docker network](#docker-network)
     1. [Run docker container](#run-docker-container)
 1. [Develop](#develop)
     1. [Prerequisite software](#prerequisite-software)
@@ -29,6 +29,14 @@ a mounted volume.
 1. [Examples](#examples)
 1. [Errors](#errors)
 1. [References](#references)
+
+### Legend
+
+1. :thinking: - A "thinker" icon means that a little extra thinking may be required.
+   Perhaps you'll need to make some choices.
+   Perhaps it's an optional step.
+1. :pencil2: - A "pencil" icon means that the instructions may need modification before performing.
+1. :warning: - A "warning" icon means that something tricky is happening, so pay attention.
 
 ## Expectations
 
@@ -48,15 +56,6 @@ This repository assumes a working knowledge of:
 
 ## Demonstrate using Docker
 
-### Get docker image
-
-1. The `senzing/db2-driver-installer` docker image is on [DockerHub](https://hub.docker.com/r/senzing/db2-driver-installer) and can be downloaded.
-   Example:
-
-    ```console
-    sudo docker pull senzing/db2-driver-installer
-    ```
-
 ### Configuration
 
 Configuration values specified by environment variable or command line parameter.
@@ -64,6 +63,9 @@ Configuration values specified by environment variable or command line parameter
 - **[SENZING_OPT_IBM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_opt_ibm_dir)**
 
 ### Volumes
+
+:thinking:
+The Db2 driver may be placed in any directory.
 
 1. **Example #1:**
    To mimic an actual RPM installation,
@@ -84,26 +86,42 @@ Configuration values specified by environment variable or command line parameter
     export SENZING_OPT_IBM_DIR=${SENZING_VOLUME}/opt-ibm
     ```
 
-### Run docker container
+### Docker network
 
-1. :pencil2: Determine docker network.
+:thinking: **Optional:**  Use if docker container is part of a docker network.
+
+1. List docker networks.
    Example:
 
     ```console
     sudo docker network ls
-
-    # Choose value from NAME column of docker network ls
-    export SENZING_NETWORK=nameofthe_network
     ```
+
+1. :pencil2: Specify docker network.
+   Choose value from NAME column of `docker network ls`.
+   Example:
+
+    ```console
+    export SENZING_NETWORK=*nameofthe_network*
+    ```
+
+1. Construct parameter for `docker run`.
+   Example:
+
+    ```console
+    export SENZING_NETWORK_PARAMETER="--net ${SENZING_NETWORK}"
+    ```
+
+### Run docker container
 
 1. Run docker container.
    Example:
 
     ```console
     sudo docker run \
-      --net ${SENZING_NETWORK} \
       --rm \
       --volume ${SENZING_OPT_IBM_DIR}:/opt/IBM \
+      ${SENZING_NETWORK_PARAMETER} \
       senzing/db2-driver-installer
     ```
 
