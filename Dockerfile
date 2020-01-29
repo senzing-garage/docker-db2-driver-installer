@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=debian:9
+ARG BASE_IMAGE=debian:10.2
 
 # -----------------------------------------------------------------------------
 # Stage: db2_builder
