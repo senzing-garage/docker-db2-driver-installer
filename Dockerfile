@@ -9,7 +9,7 @@ FROM ${BASE_IMAGE} as db2_builder
 ENV REFRESHED_AT=2019-08-06
 
 LABEL Name="senzing/senzing-db2-builder" \
-      Version="1.0.0"
+      Version="1.0.1"
 
 # Install packages via apt.
 
