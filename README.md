@@ -64,26 +64,39 @@ Configuration values specified by environment variable or command line parameter
 
 ### Volumes
 
-:thinking:
-The Db2 driver may be placed in any directory.
-
-1. **Example #1:**
-   To mimic an actual RPM installation,
-   identify directories for RPM output in this manner:
-
-    ```console
-    export SENZING_OPT_IBM_DIR=/opt/IBM
-    ```
-
-1. :pencil2: **Example #2:**
-   If Senzing directories were put in alternative directories,
-   set environment variables to reflect where the directories were placed.
+1. :pencil2: Specify the directory containing the Senzing installation.
+   Use the same `SENZING_VOLUME` value used when performing
+   "[How to initialize Senzing with Docker](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/initialize-senzing-with-docker.md)".
    Example:
 
     ```console
     export SENZING_VOLUME=/opt/my-senzing
+    ```
 
-    export SENZING_OPT_IBM_DIR=${SENZING_VOLUME}/opt-ibm
+    1. Here's a simple test to see if `SENZING_VOLUME` is correct.
+       The following commands should return file contents.
+       Example:
+
+        ```console
+        cat ${SENZING_VOLUME}/g2/g2BuildVersion.json
+        cat ${SENZING_VOLUME}/data/1.0.0/libpostal/data_version
+        ```
+
+    1. :warning:
+       **macOS** - [File sharing](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/share-directories-with-docker.md#macos)
+       must be enabled for `SENZING_VOLUME`.
+    1. :warning:
+       **Windows** - [File sharing](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/share-directories-with-docker.md#windows)
+       must be enabled for `SENZING_VOLUME`.
+
+1. Identify the `data_version`, `etc`, `g2`, and `var` directories.
+   Example:
+
+    ```console
+    export SENZING_DATA_VERSION_DIR=${SENZING_VOLUME}/data/1.0.0
+    export SENZING_ETC_DIR=${SENZING_VOLUME}/etc
+    export SENZING_G2_DIR=${SENZING_VOLUME}/g2
+    export SENZING_VAR_DIR=${SENZING_VOLUME}/var
     ```
 
 ### Docker network
