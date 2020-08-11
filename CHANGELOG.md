@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2020-08-11
+
+### Changed in 1.0.2
+
+- Fixed symbolic link issue with `libdb2o.so` and `libdb2.so`
+
 ## [1.0.1] - 2020-01-30
 
 ### Changed in 1.0.1

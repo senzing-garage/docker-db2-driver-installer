@@ -6,10 +6,10 @@ ARG BASE_IMAGE=debian:10.2
 
 FROM ${BASE_IMAGE} as db2_builder
 
-ENV REFRESHED_AT=2019-08-06
+ENV REFRESHED_AT=2020-08-11
 
 LABEL Name="senzing/senzing-db2-builder" \
-      Version="1.0.1"
+      Version="1.0.2"
 
 # Install packages via apt.
 
@@ -31,14 +31,14 @@ RUN unzip -d /tmp/extracted-jdbc /tmp/db2-jdbc-sqlj/jdbc_sqlj/db2_db2driver_for_
 # Final stage
 # -----------------------------------------------------------------------------
 
-ARG BASE_IMAGE=debian:9
+ARG BASE_IMAGE=debian:10.2
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2019-08-06
+ENV REFRESHED_AT=2020-08-11
 
 LABEL Name="senzing/db2-driver-installer" \
       Maintainer="support@senzing.com" \
-      Version="1.0.0"
+      Version="1.0.2"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
@@ -141,8 +141,9 @@ COPY --from=db2_builder [ \
 
 # Create files and links.
 
-RUN ln -s /opt/IBM-template/db2/clidriver/lib/libdb2.so.1  /opt/IBM-template/db2/clidriver/lib/libdb2.so \
- && ln -s /opt/IBM-template/db2/clidriver/lib/libdb2o.so.1 /opt/IBM-template/db2/clidriver/lib/libdb2o.so
+WORKDIR /opt/IBM-template/db2/clidriver/lib
+RUN ln -s libdb2.so.1  libdb2.so \
+ && ln -s libdb2o.so.1 libdb2o.so
 
 # Runtime execution.
 
