@@ -79,7 +79,7 @@ Configuration values specified by environment variable or command line parameter
 
         ```console
         cat ${SENZING_VOLUME}/g2/g2BuildVersion.json
-        cat ${SENZING_VOLUME}/data/1.0.0/libpostal/data_version
+        cat ${SENZING_VOLUME}/data/2.0.0/libpostal/data_version
         ```
 
     1. :warning:
