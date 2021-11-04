@@ -26,12 +26,6 @@ docker-build: docker-rmi-for-build
 		--tag $(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		.
 
-.PHONY: docker-build-development-cache
-docker-build-development-cache: docker-rmi-for-build-development-cache
-	docker build \
-		--tag $(DOCKER_IMAGE_TAG) \
-		.
-
 # -----------------------------------------------------------------------------
 # Clean up targets
 # -----------------------------------------------------------------------------
@@ -41,10 +35,6 @@ docker-rmi-for-build:
 	-docker rmi --force \
 		$(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		$(DOCKER_IMAGE_NAME)
-
-.PHONY: docker-rmi-for-build-development-cache
-docker-rmi-for-build-development-cache:
-	-docker rmi --force $(DOCKER_IMAGE_TAG)
 
 .PHONY: clean
 clean: docker-rmi-for-build docker-rmi-for-build-development-cache
