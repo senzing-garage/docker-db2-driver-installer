@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=debian:11.3-slim@sha256:06a93cbdd49a265795ef7b24fe374fee670148a7973190fb798e43b3cf7c5d0f
+ARG BASE_IMAGE=debian:11.3-slim@sha256:f6957458017ec31c4e325a76f39d6323c4c21b0e31572efa006baa927a160891
 
 # -----------------------------------------------------------------------------
 # Stage: db2_builder
@@ -6,7 +6,7 @@ ARG BASE_IMAGE=debian:11.3-slim@sha256:06a93cbdd49a265795ef7b24fe374fee670148a79
 
 FROM ${BASE_IMAGE} as db2_builder
 
-ENV REFRESHED_AT=2022-05-16
+ENV REFRESHED_AT=2022-06-27
 
 LABEL Name="senzing/senzing-db2-builder" \
       Version="1.0.3"
@@ -31,10 +31,10 @@ RUN unzip -d /tmp/extracted-jdbc /tmp/db2-jdbc-sqlj/jdbc_sqlj/db2_db2driver_for_
 # Final stage
 # -----------------------------------------------------------------------------
 
-ARG BASE_IMAGE=debian:11.3-slim@sha256:06a93cbdd49a265795ef7b24fe374fee670148a7973190fb798e43b3cf7c5d0f
+ARG BASE_IMAGE=debian:11.3-slim@sha256:f6957458017ec31c4e325a76f39d6323c4c21b0e31572efa006baa927a160891
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2022-05-16
+ENV REFRESHED_AT=2022-06-27
 
 LABEL Name="senzing/db2-driver-installer" \
       Maintainer="support@senzing.com" \
