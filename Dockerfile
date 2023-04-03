@@ -9,7 +9,7 @@ FROM ${BASE_IMAGE} as db2_builder
 ENV REFRESHED_AT=2023-04-03
 
 LABEL Name="senzing/senzing-db2-builder" \
-      Version="1.0.4"
+      Version="1.0.5"
 
 # Install packages via apt.
 
@@ -38,7 +38,7 @@ ENV REFRESHED_AT=2023-04-03
 
 LABEL Name="senzing/db2-driver-installer" \
       Maintainer="support@senzing.com" \
-      Version="1.0.4"
+      Version="1.0.5"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
