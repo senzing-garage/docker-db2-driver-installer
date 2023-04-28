@@ -65,8 +65,6 @@ Configuration values specified by environment variable or command line parameter
 ### Volumes
 
 1. :pencil2: Specify the directory containing the Senzing installation.
-   Use the same `SENZING_VOLUME` value used when performing
-   "[How to initialize Senzing with Docker](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/initialize-senzing-with-docker.md)".
    Example:
 
     ```console
@@ -79,7 +77,6 @@ Configuration values specified by environment variable or command line parameter
 
         ```console
         cat ${SENZING_VOLUME}/g2/g2BuildVersion.json
-        cat ${SENZING_VOLUME}/data/3.0.0/libpostal/data_version
         ```
 
     1. :warning:
@@ -141,9 +138,9 @@ Configuration values specified by environment variable or command line parameter
 
 The following software programs need to be installed:
 
-1. [git](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/install-git.md)
-1. [make](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/install-make.md)
-1. [docker](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/install-docker.md)
+1. [git](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/git.md)
+1. [make](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/make.md)
+1. [docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
 
 ### Clone repository
 
