@@ -22,7 +22,7 @@ __version__ = "1.0.5"  # See https://www.python.org/dev/peps/pep-0396/
 __date__ = '2019-08-06'
 __updated__ = '2023-04-03'
 
-SENZING_PRODUCT_ID = "5008"  # See https://github.com/Senzing/knowledge-base/blob/main/lists/senzing-product-ids.md
+SENZING_PRODUCT_ID = "5008"  # See https://github.com/senzing-garage/knowledge-base/blob/main/lists/senzing-product-ids.md
 log_format = '%(asctime)s %(message)s'
 
 # Working with bytes.
@@ -103,7 +103,7 @@ def get_parser():
         },
     }
 
-    parser = argparse.ArgumentParser(prog="db2-driver-installer.py", description="Install the Db2 driver code. For more information, see https://github.com/Senzing/docker-db2-driver-installer")
+    parser = argparse.ArgumentParser(prog="db2-driver-installer.py", description="Install the Db2 driver code. For more information, see https://github.com/senzing-garage/docker-db2-driver-installer")
     subparsers = parser.add_subparsers(dest='subcommand', help='Subcommands (SENZING_SUBCOMMAND):')
 
     for subcommand_key, subcommand_values in subcommands.items():
@@ -135,7 +135,7 @@ message_dictionary = {
     "100": "senzing-" + SENZING_PRODUCT_ID + "{0:04d}I",
     "150": "{0} copied to {1}.",
     "292": "Configuration change detected.  Old: {0} New: {1}",
-    "293": "For information on warnings and errors, see https://github.com/Senzing/stream-loader#errors",
+    "293": "For information on warnings and errors, see https://github.com/senzing-garage/stream-loader#errors",
     "294": "Version: {0}  Updated: {1}",
     "295": "Sleeping infinitely.",
     "296": "Sleeping {0} seconds.",

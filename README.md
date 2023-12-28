@@ -1,5 +1,17 @@
 # docker-db2-driver-installer
 
+If you are beginning your journey with
+[Senzing](https://senzing.com/),
+please start with
+[Senzing Quick Start guides](https://docs.senzing.com/quickstart/).
+
+You are in the
+[Senzing Garage](https://github.com/senzing-garage)
+where projects are "tinkered" on.
+Although this GitHub repository may help you understand an approach to using Senzing,
+it's not considered to be "production ready" and is not considered to be part of the Senzing product.
+Heck, it may not even be appropriate for your application of Senzing!
+
 ## Overview
 
 The `senzing/db2-driver-installer` docker image installs redistributable Db2 client code into
@@ -8,7 +20,7 @@ a mounted volume.
 ### Related artifacts
 
 1. [DockerHub](https://hub.docker.com/r/senzing/db2-driver-installer)
-1. [Helm Chart](https://github.com/Senzing/charts/tree/main/charts/ibm-db2-driver-installer)
+1. [Helm Chart](https://github.com/senzing-garage/charts/tree/main/charts/ibm-db2-driver-installer)
 
 ### Contents
 
@@ -52,7 +64,7 @@ Budget 20 minutes to get the demonstration up-and-running, depending on CPU and 
 
 This repository assumes a working knowledge of:
 
-1. [Docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
+1. [Docker](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/docker.md)
 
 ## Demonstrate using Docker
 
@@ -60,7 +72,7 @@ This repository assumes a working knowledge of:
 
 Configuration values specified by environment variable or command line parameter.
 
-- **[SENZING_OPT_IBM_DIR](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_opt_ibm_dir)**
+- **[SENZING_OPT_IBM_DIR](https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md#senzing_opt_ibm_dir)**
 
 ### Volumes
 
@@ -80,10 +92,10 @@ Configuration values specified by environment variable or command line parameter
         ```
 
     1. :warning:
-       **macOS** - [File sharing](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#macos)
+       **macOS** - [File sharing](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#macos)
        must be enabled for `SENZING_VOLUME`.
     1. :warning:
-       **Windows** - [File sharing](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#windows)
+       **Windows** - [File sharing](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#windows)
        must be enabled for `SENZING_VOLUME`.
 
 1. Specify directory for IBM DB2 drivers.
@@ -138,14 +150,14 @@ Configuration values specified by environment variable or command line parameter
 
 The following software programs need to be installed:
 
-1. [git](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/git.md)
-1. [make](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/make.md)
-1. [docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
+1. [git](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/git.md)
+1. [make](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/make.md)
+1. [docker](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/docker.md)
 
 ### Clone repository
 
 For more information on environment variables,
-see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md).
+see [Environment Variables](https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md).
 
 1. Set these environment variable values:
 
@@ -156,7 +168,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/main/
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
     ```
 
-1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/clone-repository.md) to install the Git repository.
+1. Follow steps in [clone-repository](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/clone-repository.md) to install the Git repository.
 
 ### Downloads
 
@@ -203,4 +215,4 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/main/
 
 ## References
 
-1. [How to support Db2](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/support-db2.md)
+1. [How to support Db2](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/support-db2.md)
