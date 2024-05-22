@@ -8,6 +8,7 @@ disable=
     line-too-long,
     missing-function-docstring,
     missing-module-docstring,
+    possibly-used-before-assignment,
     redefined-outer-name,
     too-many-branches,
     too-many-locals,
