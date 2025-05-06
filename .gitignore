@@ -1,4 +1,9 @@
 .DS_Store
 
 downloads/
+
+# Visual Studio code
+.vscode/*
+!.vscode/cspell.json
+*.code-workspace
 .history
